@@ -1,12 +1,18 @@
 <?php
+namespace console\controllers;
 
-use yii\db\Migration;
+use yii\console\Controller;
 use common\models\User;
 
-class m190703_044234_insert_testuser extends Migration
+class UserController extends Controller
 {
 
-    public function safeUp()
+    public function actionIndex()
+    {
+        echo "please use command\n";
+    }
+
+    public function actionAdd()
     {
         $user = new User();
         $user->username = 'user';
@@ -27,7 +33,7 @@ class m190703_044234_insert_testuser extends Migration
         $user->save();
     }
 
-    public function safeDown()
+    public function actionDelete()
     {
         $user = User::find()->where(['username' => 'user'])->one();
         if (!empty($user)) $user->delete();
